@@ -38,8 +38,6 @@ export interface ValidatedCheckboxControlProps
 	ariaDescribedBy?: string | undefined;
 	// id to use for the error message. If not provided, an id will be generated.
 	errorId?: string;
-	// Feedback to display alongside the input. May be hidden when validation errors are displayed.
-	feedback?: ReactElement | null;
 	// Callback to run on change which is passed the updated value.
 	onChange: ( newValue: boolean ) => void;
 	// Optional label for the field.
@@ -84,7 +82,6 @@ const ValidatedCheckboxControl = forwardRef<
 			checked = false,
 			customValidation = () => true,
 			customValidityMessage,
-			feedback = null,
 			label,
 			validateOnMount = true,
 			instanceId: preferredInstanceId = '',
@@ -224,17 +221,6 @@ const ValidatedCheckboxControl = forwardRef<
 				checked={ checked }
 				title="" // This prevents the same error being shown on hover.
 				label={ label }
-				feedback={
-					showError && hasError ? (
-						<ValidationInputError
-							errorMessage={ passedErrorMessage }
-							propertyName={ errorIdString }
-							elementId={ errorIdString }
-						/>
-					) : (
-						feedback
-					)
-				}
 				{ ...rest }
 			/>
 		);

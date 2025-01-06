@@ -15,18 +15,11 @@ const defaultValidityMessage =
 			? label
 			: label?.toLocaleLowerCase() || __( 'field', 'woocommerce' );
 
-		let invalidFieldMessage = sprintf(
+		const invalidFieldMessage = sprintf(
 			/* translators: %s field label */
 			__( 'Please enter a valid %s', 'woocommerce' ),
 			fieldLabel
 		);
-
-		if ( inputElement.type === 'checkbox' ) {
-			invalidFieldMessage = __(
-				'Please check this box if you want to proceed.',
-				'woocommerce'
-			);
-		}
 
 		if (
 			validity.valueMissing ||
